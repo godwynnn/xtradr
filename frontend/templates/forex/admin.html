@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content%}
+ 
+
+
+
+<div class="container-fluid bg-dark">
+  
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid bg-dark" >
+            <a class="navbar-brand" href="{%url 'landing' %}">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{%url 'landing' %}">Home</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'profile' %}">Profile</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'create_package' %}">Create Post</a>
+                </li>
+
+                
+              </ul>
+          
+              
+                <a href="{%url 'logout' %}"><button class="btn btn-info" type="submit">Logout</button></a>
+              
+            </div>
+          </div>
+        </nav>
+
+
+
+
+        <div class="row bg-light">
+
+
+          <table class="table customer_invoice">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Second Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Id Number</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%for customer in customers %}
+              <tr>
+            
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{customer.first_name}}</td>
+                <td>{{customer.second_name}}</td>
+                <td>{{customer.email}}</td>
+                <td>{{customer.id_no}}</td>
+                <td><a href="{%url 'user_package' customer.id  %}"><button>Detail</button></a></td>
+                <td><a href="{%url 'delete_user' customer.id %}"><button>Remove</button></a></td>
+              </tr>
+              {%endfor%}
+            </tbody>
+          </table>
+
+          
+        </div>
+        
+    </div>
+    {% endblock %}

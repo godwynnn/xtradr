@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content%}
+{%include 'navbar.html' %}
+
+<div class="container-fluid  bg-light" style="height: 800px; margin-top: 0;">
+    <br><br><br><br>
+
+
+
+<div class="row">
+
+    <div class="col" style="border: 1px solid black;">
+
+        <h1>Hello</h1>
+    </div>
+
+
+    
+    
+    <div class="col"style="border: 1px solid black;">
+        <div class="col">
+            <h1>{{package.name}}</h1>
+        </div>
+            <em>${{package.product_price}}</em>
+            <p>{{package.description}}</p>
+        </div>
+
+
+
+</div>
+        
+        
+
+<!-- 
+                 {% if purchase %}
+
+                    <a href="{%url  'cart' %}"><button>Go To Cart</button></a>
+
+                    {% else %} 
+
+
+
+                    <form action="{%url  'Add_to_cart' package.slug %}" method="POST" >
+                        {%csrf_token%}
+                    
+                        <button type="submit" name="package_id" value="{{package.slug}}" >Buy</button>
+                    </form>
+
+
+                {% endif %}
+ -->
+
+
+
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+<!-- 
+<h1>{{request.user}}</h1>
+
+    {% if user.is_staff %}
+    <a href="{%url 'update_package' package.slug %}"><button>Edit</button></a>
+    <a href="{%url 'delete_package' package.slug %}"><button>Delete</button></a>
+
+    {% endif %} -->
+
+</div>
+{% endblock %}

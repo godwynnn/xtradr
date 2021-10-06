@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content%}
+{%include 'navbar.html' %}
+
+    <form action="" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+
+        <label for="id_name">Package Name</label>
+        {{form.name}} <br>
+
+
+        <label for="id_price">Price</label>
+        {{form.price}}<br>
+
+
+
+        <label for="id_image">Package Image</label>
+        {{form.image}}<br>
+
+
+
+        <label for="id_description">Description</label>
+        {{form.description}}<br>
+
+
+        <button type="submit">Publish</button>
+        
+    </form>
+
+{% endblock %}

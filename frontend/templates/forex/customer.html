@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static%}
+
+{% block content %}
+
+
+
+
+<div class="container-fluid bg-light dashboard  ">
+
+            
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid bg-dark" >
+                  <a class="navbar-brand" href="{%url 'landing' %}"> X-Tradr</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{%url 'landing' %}">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{%url 'profile' %}">Profile</a>
+                      </li>
+            
+                    
+                      
+                    </ul>
+                    <a href="{%url 'logout' %}"><button class="btn btn-info" type="submit">Logout</button></a>
+                  </div>
+                </div>
+              </nav>
+          
+
+  
+
+
+
+
+
+
+      
+      <div class="row  packages_holder " style="position: relative;top: 20px;"  >
+
+        
+      
+        {% for product in products.package.all%}
+
+        
+         
+
+            <div class="  col-lg-3 col-md-4 col-8 offset-lg-1 offset-3 offset-md-2 bg-secondary    packages" style="border: 1px solid red; position: relative; right: 50px;" >
+                <h1 style="text-align: center; position: relative; top: 20%;" class="text-light" >{{product.name}}</h2>
+            </div>
+           
+      
+        
+        {%endfor%}
+
+     
+
+      </div>
+
+      <!-- <br><br>
+      <table class="table customer_invoice">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Invoice-Id</th>
+            <th scope="col">Order Id</th>
+            <th scope="col">Amt paid(in btc)</th>
+            <th scope="col">Amt paid(in usd)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for inv in user_inv %}
+          <tr>
+        
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{inv.id}}</td>
+            <td>{{inv.order_id}}</td>
+            <td>{{inv.btc_value|floatformat:5}}</td>
+            <td>{{inv.usd_value}}</td>
+           
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+     -->
+
+     
+
+ 
+</div>
+    {% endblock %}

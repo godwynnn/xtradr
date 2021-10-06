@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block content%}
+{%include 'navbar.html' %}
+
+
+<div class="container-fluid  bg-light " style="height: 1000px; margin-top: 0;">
+
+
+
+  <br><br><br><br>
+
+        
+        <main class="container main_container  " >
+       
+            
+                    <div class="row row-cols-1 row-cols-md-3 mb-2 text-center ">
+                        {% for package in packages %}
+                      <div class="col-lg-4 col-sm-12 col-md-6 ">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                          <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">{{package.name}}</h4>
+                          </div>
+                          <div class="card-body">
+                            <h1 class="card-title pricing-card-title">btc{{package.product_price}}<small class="text-muted fw-light">/rate</small></h1>
+                            <ul class="list-unstyled mt-3 mb-4">
+                              <li>{{package.description| truncatewords:7}}</li><br>
+                              <li>Get 100% ROI</li><br>
+                              <li>Starter pack</li>
+                             
+                            </ul>
+
+                          {% if package in cart.package.all %}
+                            <a href="{%url  'cart' %}"><button type="button" class="w-50 btn btn-lg btn-outline-primary">Go To Cart</button></a>
+                            <a href="{%url 'detail_package'  package.slug %}"><button type="button" class="w-40 btn btn-lg btn-outline-primary">View</button></a>
+                            
+                         {% else %} 
+                        
+
+                            <form action="{%url  'Add_to_cart' package.slug %}" method="POST" >
+                                {%csrf_token%}
+                            
+                            <button type="submit" class="w-50 btn btn-lg btn-outline-primary">Buy</button>
+                          </form>
+
+                            <span><a href="{%url 'detail_package'  package.slug %}"><button type="button" class="w-40 btn btn-lg btn-outline-primary">View</button></a></span>
+                            
+                            
+        
+                        {% endif %}
+                            
+                        </div>
+                        </div>
+                      </div>
+
+                      {% endfor %}
+                    </div>          
+                <!-- {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+                   -->
+
+            
+         
+        
+        </main>
+
+</div>
+{% endblock %}
+
+

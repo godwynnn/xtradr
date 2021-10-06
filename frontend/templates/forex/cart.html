@@ -1,0 +1,138 @@
+{% extends 'base.html'%}
+
+
+{% load static %}
+
+
+{% block content%}
+{%include 'navbar.html' %}
+
+ <div class="container-fluid  bg-light" style="height: 800px; margin-top: 0;">
+{%if bill %}
+        <div class="container cart_table" style="position:  relative ; top:90px; background-color: rgb(230, 230, 230);">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">S/N</th>
+                        <th scope="col">Package</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Date ordered</th>
+
+                    </tr>
+                    </thead>
+                            <tbody>
+                                {% for cart in carts%}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{cart.name}}</td>
+                                <td>{{cart.description| truncatewords:5}}</td>
+                                <td>{{cart.price}}</td>
+                                <td>{{cart.date_ordered}}</td>
+                                
+                            </tr>
+                            {% endfor %}
+                            
+                            <tr>
+                                <hr style="border: 2px solid black;" >
+                                <th scope="row"></th>
+                                
+                                
+                            
+                                <tr>
+                                    <td colspan="2" align=left><strong>Total:</strong></td>
+                                    <td><strong>${{value}}</strong></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                    <td colspan="2" align=left><strong>Paid Bitcoins:</strong></td>
+                                    <td> <p>Amount: <strong>{{btc}}</strong> BTC ⇌ <strong>{{value}}</strong> USD</p></td>
+                                    </tr>
+                                
+                            </tr>
+            
+                            <tr>
+                            
+                                <th scope="row"></th>
+                                <td colspan="2" style="font-weight: bolder;">
+                                    
+                            </tr>
+                            
+                            </tbody>
+                </table>
+
+                <div class="col-md-6 col-sm-12">
+                 
+                    <p>Bitcoin Address : <strong>{{addr}}</strong></p>
+                   
+            </div>
+
+
+
+        {% else %}
+        <div class="container  cart_table" style="position:  relative ; top:90px; background-color: rgb(230, 230, 230);">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">S/N</th>
+                    <th scope="col">Package</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Date ordered</th>
+
+                </tr>
+                </thead>
+                        <tbody>
+                            {% for cart in carts%}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td>{{cart.name}}</td>
+                            <td>{{cart.description| truncatewords:5}}</td>
+                            <td>{{cart.price}}</td>
+                            <td>{{cart.date_ordered}}</td>
+                            <td><a href="{%url  'remove_from_cart' cart.slug %}"><button>Undo</button></a></td>
+                        </tr>
+                        {% endfor %}
+                        
+                        <tr>
+                            <hr style="border: 2px solid black;" >
+                            <th scope="row"></th>
+                            <td colspan="2" style="font-weight: bolder;">TOTAL</td>
+                            <td style="font-weight: bolder;">{{cart_total}}</td>
+                            
+
+                            <tr>
+                                <td colspan="2" align=left><strong>Total:</strong></td>
+                                <td><strong>${{value}}</strong></td>
+                                </tr>
+                                <tr>
+                                <td colspan="2" align=left><strong>Paid Bitcoins:</strong></td>
+                                <td><strong>{{paid}}</strong></td>
+                                </tr>
+                            
+                        </tr>
+        
+                        <tr>
+                        
+                            <th scope="row"></th>
+                            <td colspan="2" style="font-weight: bolder;">
+                                
+                                <form action="{%url 'checkout' %}" method="POST">{%csrf_token%}
+                            
+                                <button type="submit" class="btn btn-primary">Proceed</button>
+                            </form></td>
+                        
+                        </tr>
+                        
+                        </tbody>
+            </table>
+        </div>  
+
+        {%endif%}
+</div>  
+{% endblock %}
+
+
+
+
+    

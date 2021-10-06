@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content%}
+
+
+
+
+    <form action="" enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+
+        <label for="id_name">Package Name</label>
+        {{form.name}} <br>
+
+
+        <label for="id_price">Price</label>
+        {{form.price}}<br>
+
+
+        <label for="id_price">Category</label>
+        {{form.category}}<br>
+
+        <label for="id_image">Package Image</label>
+        {{form.image}}<br>
+
+
+        <label for="id_price">Quantity</label>
+        {{form.quantity}}<br>
+
+        <label for="id_description">Description</label>
+        {{form.description}}<br>
+
+
+        <button type="submit">Publish</button>
+        
+    </form>
+
+
+{% endblock %}
