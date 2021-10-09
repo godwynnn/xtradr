@@ -1,1 +1,1 @@
-web: gunicorn forex.wsgi 
+web: gunicorn forex.wsgi --log-file -
