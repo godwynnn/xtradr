@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-pz65q+h4#*w43u9!s&8a42n2q)!v1z9^$1uhbq0ih2rbh0_7g3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['xtradr-demo.herokuapp.com', '127.0.0.1']
 
@@ -136,7 +136,6 @@ MEDIA_URL= '/media/'
 MEDIA_ROOT= os.path.join(BASE_DIR,'static/media')
 
 
-django_heroku.settings(locals())
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -150,3 +149,7 @@ EMAIL_PORT=''
 EMAIL_HOST_USER=''
 EMAIL_HOST_PASSWORD=''
 EMAIL_USE_TLS=''
+
+
+
+django_heroku.settings(locals())
