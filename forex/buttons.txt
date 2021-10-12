@@ -1,0 +1,37 @@
+<button type="button" class="btn btn-outline-primary">Primary</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<button type="button" class="btn btn-outline-success">Success</button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+<button type="button" class="btn btn-outline-warning">Warning</button>
+<button type="button" class="btn btn-outline-info">Info</button>
+<button type="button" class="btn btn-outline-light">Light</button>
+<button type="button" class="btn btn-outline-dark">Dark</button>
+
+
+
+
+
+# def CheckoutSession(request):
+
+#     cart=Cart.objects.get(customer=request.user.customer)
+    
+#     resource_url = 'https://bitpay.com/invoices'
+#     post_data = {
+#         'currency': 'USD',
+#         'price': cart.total_sum(),
+#         'orderId': cart.id,
+#         'notificationURL': 'https://merchantwebsite.com/shop/notifications',
+#         'redirectURL': 'http://127.0.0.1:8000/forex/success/',
+#         'buyer': {
+#             'email': cart.customer.email,
+#         },
+#         'token': 'MqA2wX15qHCbG7FBtJZRAxQunrRjAvGBRVJedsiTnZY'
+#     }
+#     headers = {
+#         'X-Accept-Version': '2.0.0',
+#         'Content-Type': 'application/json',
+#         'X-Identity': '02811dcd84bb5f436269ed070c27858f872196c90ce77cf869cf3516c82477d22e',
+#         'X-Signature': '304402201ee44e2d3df647f73ba7079f4dcfba9dff9e5ed352b2aeb3029654358538fafa0220337b38b26f85207c5f55cc24a5c6ff5e5ff151d5bff601bf4913e99fec740aa3'
+#     }
+#     response = requests.post(url=resource_url, data=json.dumps(post_data), headers=headers).content
+#     print(response.decode(json.detect_encoding(response)))
