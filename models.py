@@ -87,7 +87,7 @@ class Invoice(models.Model):
    
 
 class UserPackage(models.Model):
-    customer=models.ForeignKey(Customer,null=True, blank=True, on_delete=models.CASCADE)
+    customer=models.OneToOneField(Customer,null=True, blank=True, on_delete=models.CASCADE)
     package=models.ManyToManyField(Package,blank=True,)
 
     def __str__(self):

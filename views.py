@@ -201,6 +201,7 @@ def SignupPage(request):
                 # username=username
             )
             Cart.objects.create(customer=customer)
+            UserPackage.objects.create(customer=customer)
             
           
             form=RegistrationForm()
